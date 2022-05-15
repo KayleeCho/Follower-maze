@@ -1,7 +1,7 @@
 package maze.service
 
-import maze.domain.DeadLetterQueue
-import maze.model.{DeliveryError, EventError}
+import maze.domain.{DeadLetterQueue, DeliveryError, EventError}
+import maze.model.DeliveryError
 import maze.protocol._
 
 import scala.collection.concurrent.TrieMap

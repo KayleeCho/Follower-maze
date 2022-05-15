@@ -1,6 +1,6 @@
 package maze.router
 
-import maze.domain.DeadLetterQueue
+import maze.domain.{DeadLetterQueue, EventError, ParseError}
 import maze.model.Message.UserId
 import maze.model._
 import maze.service._
@@ -8,7 +8,7 @@ import maze.service._
 import scala.collection.mutable
 
 class MessageRouter(deadLetterQueue: DeadLetterQueue,
-                    messageQueueManager: EventQueueManager) {
+                    eventQueueManager: EventQueueManager) {
 
   val clientRegistry = new ClientRegistry(deadLetterQueue)
 
@@ -46,20 +46,20 @@ class MessageRouter(deadLetterQueue: DeadLetterQueue,
   private def sendMessage(message: Message): Unit =
     message match {
       case Follow(eventSequence, fromUserId, toUserId, payload) =>
-        messageQueueManager.push(message)
+        eventQueueManager.push(message)
         follow(Follow(eventSequence, fromUserId, toUserId, payload))
       case Unfollow(eventSequence, fromUserId, toUserId, payload) =>
-        messageQueueManager.push(message)
+        eventQueueManager.push(message)
         unfollow(Unfollow(eventSequence, fromUserId, toUserId, payload))
       case PrivateMessage(eventSequence, fromUserId, toUserId, payload) =>
-        messageQueueManager.push(message)
+        eventQueueManager.push(message)
         privateMessage(
           PrivateMessage(eventSequence, fromUserId, toUserId, payload))
       case Broadcast(eventSequence, payload) =>
-        messageQueueManager.push(message)
+        eventQueueManager.push(message)
         broadcast(Broadcast(eventSequence, payload))
       case StatusUpdate(eventSequence, fromUserId, payload) =>
-        messageQueueManager.push(message)
+        eventQueueManager.push(message)
         statusUpdate(StatusUpdate(eventSequence, fromUserId, payload))
 
     }

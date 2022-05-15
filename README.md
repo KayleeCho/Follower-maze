@@ -1,6 +1,8 @@
 # Follower-maze
-Soundcloud FollowerMaze code challenge
+Kaylee's Solution to Soundcloud FollowerMaze code challenge
 
 ## Instruction
 
-https://github.com/soundcloud/follower-maze-refactoring-challenge/edit/master/INSTRUCTIONS.md
+https://github.com/soundcloud/follower-maze-refactoring-challenge/blob/master/INSTRUCTIONS.md
+
+

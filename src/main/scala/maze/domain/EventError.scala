@@ -1,4 +1,4 @@
-package maze.model
+package maze.domain
 
 sealed trait EventError
 case class ParseError(message: String) extends EventError
