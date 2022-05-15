@@ -3,7 +3,7 @@ package maze.protocol
 import java.io.{BufferedWriter, OutputStreamWriter}
 import java.net.Socket
 
-import maze.domain.DeliveryError
+import maze.model.DeliveryError
 
 import scala.util.{Success, Try}
 

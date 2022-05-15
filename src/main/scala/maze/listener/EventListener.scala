@@ -19,7 +19,6 @@ class EventListener(messageRouter: MessageRouter) {
 
       val readerStart = Try {
         new BufferedReader(new InputStreamReader(eventSocket.getInputStream()))
-
       }
 
       readerStart match {
